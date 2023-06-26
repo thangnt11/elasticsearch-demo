@@ -6,6 +6,7 @@ import com.demo.elasticsearch.web.request.ArticleRequest;
 import com.demo.elasticsearch.web.response.ArticleResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.elasticsearch.core.SearchPage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,13 +32,13 @@ public class ArticleResource {
     }
 
     @GetMapping("/all-page")
-    ResponseEntity<Page<ArticleResponse>> getArticlesPage() {
+    ResponseEntity<Page<Article>> getArticlesPage() {
         var res = articleService.getAllArticlePage();
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
     @GetMapping("/all")
-    ResponseEntity<List<ArticleResponse>> getArticles() {
+    ResponseEntity<List<Article>> getArticles() {
         var res = articleService.getAllArticle();
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
